@@ -1,7 +1,7 @@
 {
   "name": "react-router-fader",
   "version": "0.0.0-development",
-  "description": "wraps react-fader for use with react-router version 2 or 3",
+  "description": "animated fade between child routes with react-router version 2 or 3",
   "main": "lib/index.js",
   "scripts": {
     "lint": "eslint src test stories",
@@ -45,9 +45,13 @@
     "url": "https://github.com/jcoreio/react-router-fader.git"
   },
   "keywords": [
-    "es2015",
-    "react",
-    "skeleton"
+    "react-component",
+    "react-router",
+    "react-fader",
+    "fade",
+    "transition",
+    "animation",
+    "routing"
   ],
   "author": "Andy Edwards",
   "license": "MIT",
@@ -100,9 +104,13 @@
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-fader": "^1.1.1",
     "react-hot-loader": "^3.0.0-beta.2",
+    "react-router": "^3.0.0",
+    "react-transition-context": "^1.0.0-beta9",
     "rimraf": "^2.5.4",
     "semantic-release": "^6.3.6",
+    "sinon": "^2.3.7",
     "validate-commit-msg": "^2.8.2"
   },
   "peerDependencies": {
@@ -110,5 +118,9 @@
   },
   "dependencies": {
     "prop-types": "^15.0.0"
+  },
+  "optionalDependencies": {
+    "react-fader": "^1.1.1",
+    "react-transition-context": "^1.0.0-beta9"
   }
 }
