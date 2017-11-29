@@ -1,8 +1,16 @@
 // @flow
 
-import React from 'react'
+import * as React from 'react'
 
-import type {RouteProps} from './makeReactRouterFader'
+export type Route = {
+  path?: string,
+}
+
+export type RouteProps = {
+  children?: React.Element<any>,
+  route: Route,
+  routes: Array<Route>,
+}
 
 function getKey({route, routes}: RouteProps): ?string {
   let routeFound = false
@@ -14,9 +22,9 @@ function getKey({route, routes}: RouteProps): ?string {
 }
 
 export default function makeReactRouterFader<FaderProps: Object>(
-  Fader: ReactClass<FaderProps>,
+  Fader: React.ComponentType<FaderProps>,
   extraProps?: $Shape<FaderProps> = {}
-): ReactClass<RouteProps> {
+): React.ComponentType<RouteProps> {
   const ReactRouterFader = ({children, route, routes}: RouteProps) => (
     <Fader {...extraProps}>
       {children && React.cloneElement(children, {key: getKey({route, routes})})}

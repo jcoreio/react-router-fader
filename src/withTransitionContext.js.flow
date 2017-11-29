@@ -1,6 +1,0 @@
-// @flow
-
-import type {RouteProps} from './makeReactRouterFader'
-
-declare export default ReactClass<RouteProps>
-
