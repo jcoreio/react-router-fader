@@ -2,6 +2,9 @@ import React from 'react'
 import ReactRouterFader from '../src'
 import Fader from 'react-fader'
 import {mount} from 'enzyme'
+import {configure as configureEnzyme} from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+configureEnzyme({ adapter: new Adapter() })
 import {expect} from 'chai'
 import sinon from 'sinon'
 import {Router, createMemoryHistory} from 'react-router'
@@ -43,20 +46,24 @@ describe('Fader', () => {
 
     history.push('/bar')
 
+    comp.update()
     expect(comp.text()).to.equal('Foo')
     expect(comp.find(Fader).prop('children').type).to.equal(Bar)
     expect(comp.find(Fader).prop('children').key).to.equal('/bar')
     clock.tick(1000)
+    comp.update()
     expect(comp.text()).to.equal('Bar')
     expect(comp.find(Fader).prop('children').type).to.equal(Bar)
     expect(comp.find(Fader).prop('children').key).to.equal('/bar')
 
     history.push('/baz')
 
+    comp.update()
     expect(comp.text()).to.equal('Bar')
     expect(comp.find(Fader).prop('children').type).to.equal('div')
     expect(comp.find(Fader).prop('children').key).to.equal('/baz')
     clock.tick(1000)
+    comp.update()
     expect(comp.text()).to.equal('Baz')
     expect(comp.find(Fader).prop('children').type).to.equal('div')
     expect(comp.find(Fader).prop('children').key).to.equal('/baz')
